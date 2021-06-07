@@ -59,14 +59,15 @@ For more details about how the features are extracted, please see my [report](ht
 
 First, Python >= 3.6.
 
-I used the OpenPose from this Github: [tf-pose-estimation](https://github.com/ildoonet/tf-pose-estimation). First download it:
+I used the OpenPose from this Github: [tf-pose-estimation](https://github.com/bewithme/ildoonet-tf-pose-estimation.git). First download it:
 
 [Update on 2021 June: Looks like tf-pose-estimation was deleted by the author. I will try to fix it when I have time in 2021 June/July. Sorry for the inconvenience! I should have avoided this by forking that repo.]
 
 ```
 export MyRoot=$PWD
 cd src/githubs  
-git clone https://github.com/ildoonet/tf-pose-estimation  
+git clone https://github.com/bewithme/ildoonet-tf-pose-estimation.git
+and rename ildoonet-tf-pose-estimation to tf-pose-estimation
 ```
 
 Follow its tutorial [here](https://github.com/ildoonet/tf-pose-estimation#install-1) to download the "cmu" model. As for the "mobilenet_thin", it's already inside the folder.  
