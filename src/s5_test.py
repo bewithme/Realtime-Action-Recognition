@@ -41,9 +41,11 @@ python src/s5_test.py \
 '''
 
 
-import numpy as np
-import cv2
+
 import argparse
+
+
+
 if True:  # Include project path
     import sys
     import os
@@ -59,6 +61,7 @@ if True:  # Include project path
     from utils.lib_tracker import Tracker
     from utils.lib_classifier import ClassifierOnlineTest
     from utils.lib_classifier import *  # Import all sklearn related libraries
+    from utils.cv2imagetext import cv2ImgAddText
 
 
 def par(path):  # Pre-Append ROOT to the path if it's not absolute
@@ -256,6 +259,14 @@ def remove_skeletons_with_few_joints(skeletons):
     return good_skeletons
 
 
+
+import cv2
+
+
+
+
+
+
 def draw_result_img(img_disp, ith_img, humans, dict_id2skeleton,
                     skeleton_detector, multiperson_classifier):
     ''' Draw skeletons, labels, and prediction scores onto image for display '''
@@ -281,14 +292,13 @@ def draw_result_img(img_disp, ith_img, humans, dict_id2skeleton,
     # Add blank to the left for displaying prediction scores of each class
     img_disp = lib_plot.add_white_region_to_left_of_image(img_disp)
 
-    cv2.putText(img_disp, "Frame:" + str(ith_img),
-                (20, 20), fontScale=1.5, fontFace=cv2.FONT_HERSHEY_PLAIN,
-                color=(0, 0, 0), thickness=2)
+    img_disp=cv2ImgAddText(img_disp,"帧:" + str(ith_img),20, 20)
+
+   # cv2.putText(img_disp, "Frame:" + str(ith_img),(20, 20), fontScale=1.5, fontFace=cv2.FONT_HERSHEY_PLAIN,color=(0, 0, 0), thickness=2)
 
     # Draw predicting score for only 1 person
     if len(dict_id2skeleton):
-        classifier_of_a_person = multiperson_classifier.get_classifier(
-            id='min')
+        classifier_of_a_person = multiperson_classifier.get_classifier(id='min')
         classifier_of_a_person.draw_scores_onto_image(img_disp)
     return img_disp
 
