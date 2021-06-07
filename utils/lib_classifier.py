@@ -13,17 +13,10 @@ TODO: Add more comments to this function.
 '''
 
 import numpy as np
-import sys
-import os
 import pickle
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 from collections import deque
 import cv2
 
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.datasets import make_moons, make_circles, make_classification
 from sklearn.neural_network import MLPClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
@@ -42,6 +35,7 @@ if True:
     sys.path.append(ROOT)
 
     from utils.lib_feature_proc import FeatureGenerator
+    from utils.cv2imagetext import cv2ImgAddText
 
 
 # -- Settings
@@ -208,9 +202,12 @@ class ClassifierOnlineTest(object):
                 s = "P{}:".format(self.human_id)
             else:
                 label = self.action_labels[i]
+
                 s = "{:<5}: {:.2f}".format(label, self.scores[i])
+                print(s)
                 COLOR_INTENSITY *= (0.0 + 1.0 * self.scores[i])**0.5
 
-            cv2.putText(img_disp, text=s, org=(TXT_X, TXT_Y),
-                        fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=FONT_SIZE,
-                        color=(0, 0, int(COLOR_INTENSITY)), thickness=2)
+            cv2.putText(img_disp, text=s, org=(TXT_X, TXT_Y),fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=FONT_SIZE,color=(0, 0, int(COLOR_INTENSITY)), thickness=2)
+            #img_disp=cv2ImgAddText(img_disp,str(s),TXT_X,TXT_Y,textColor=(0, 0, int(COLOR_INTENSITY)))
+
+        return img_disp
