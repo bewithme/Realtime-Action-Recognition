@@ -274,8 +274,7 @@ def draw_result_img(img_disp, ith_img, humans, dict_id2skeleton,
     # Resize to a proper size for display
     r, c = img_disp.shape[0:2]
     desired_cols = int(1.0 * c * (img_disp_desired_rows / r))
-    img_disp = cv2.resize(img_disp,
-                          dsize=(desired_cols, img_disp_desired_rows))
+    img_disp = cv2.resize(img_disp,dsize=(desired_cols, img_disp_desired_rows))
 
     # Draw all people's skeleton
     skeleton_detector.draw(img_disp, humans)
@@ -287,19 +286,19 @@ def draw_result_img(img_disp, ith_img, humans, dict_id2skeleton,
             # scale the y data back to original
             skeleton[1::2] = skeleton[1::2] / scale_h
             # print("Drawing skeleton: ", dict_id2skeleton[id], "with label:", label, ".")
-            lib_plot.draw_action_result(img_disp, id, skeleton, label)
+            img_disp=lib_plot.draw_action_result(img_disp, id, skeleton, label)
 
     # Add blank to the left for displaying prediction scores of each class
     img_disp = lib_plot.add_white_region_to_left_of_image(img_disp)
 
-    img_disp=cv2ImgAddText(img_disp,"帧:" + str(ith_img),20, 20)
+    img_disp = cv2ImgAddText(img_disp,"帧:" + str(ith_img),20, 20)
 
    # cv2.putText(img_disp, "Frame:" + str(ith_img),(20, 20), fontScale=1.5, fontFace=cv2.FONT_HERSHEY_PLAIN,color=(0, 0, 0), thickness=2)
 
     # Draw predicting score for only 1 person
     if len(dict_id2skeleton):
         classifier_of_a_person = multiperson_classifier.get_classifier(id='min')
-        classifier_of_a_person.draw_scores_onto_image(img_disp)
+        img_disp=classifier_of_a_person.draw_scores_onto_image(img_disp)
     return img_disp
 
 
