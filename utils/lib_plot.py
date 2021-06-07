@@ -9,6 +9,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 from sklearn.utils.multiclass import unique_labels
 
+if True:
+    import sys
+    import os
+    ROOT = os.path.dirname(os.path.abspath(__file__))+"/../"
+    sys.path.append(ROOT)
+    from utils.cv2imagetext import cv2ImgAddText
+
 
 def plot_confusion_matrix(y_true, y_pred, classes,
                           normalize=False,
@@ -111,8 +118,8 @@ def draw_action_result(img_display, id, skeleton, str_action_label):
     # TEST_ROW = int( miny)
     # TEST_ROW = int( skeleton[3] * img_display.shape[0])
 
-    img_display = cv2.putText(
-        img_display, "P"+str(id % 10)+": "+str_action_label, (TEST_COL, TEST_ROW), font, fontsize, (0, 0, 255), linewidth, cv2.LINE_AA)
+    #img_display = cv2.putText(img_display, "P"+str(id % 10)+": "+str_action_label, (TEST_COL, TEST_ROW), font, fontsize, (0, 0, 255), linewidth, cv2.LINE_AA)
+    return cv2ImgAddText(img_display,"P"+str(id % 10)+": "+str_action_label,TEST_COL, TEST_ROW,textColor=(0, 0, 255),textSize=40)
 
 
 def add_white_region_to_left_of_image(img_disp):

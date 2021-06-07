@@ -207,7 +207,7 @@ class ClassifierOnlineTest(object):
                 print(s)
                 COLOR_INTENSITY *= (0.0 + 1.0 * self.scores[i])**0.5
 
-            cv2.putText(img_disp, text=s, org=(TXT_X, TXT_Y),fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=FONT_SIZE,color=(0, 0, int(COLOR_INTENSITY)), thickness=2)
-            #img_disp=cv2ImgAddText(img_disp,str(s),TXT_X,TXT_Y,textColor=(0, 0, int(COLOR_INTENSITY)))
+            #cv2.putText(img_disp, text=s, org=(TXT_X, TXT_Y),fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=FONT_SIZE,color=(0, 0, int(COLOR_INTENSITY)), thickness=2)
+            img_disp=cv2ImgAddText(img_disp,str(s),TXT_X,TXT_Y,textColor=(0, 0, int(COLOR_INTENSITY)))
 
         return img_disp
