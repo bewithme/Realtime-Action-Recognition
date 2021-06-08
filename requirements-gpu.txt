@@ -1,0 +1,16 @@
+Pillow
+cython
+matplotlib
+scikit-learn==0.21.3
+scikit-image
+opencv-python
+opencv-python-headless
+h5py
+imgaug
+pandas
+argparse
+IPython[all]
+simplejson
+sklearn
+slidingwindow
+pyyaml
