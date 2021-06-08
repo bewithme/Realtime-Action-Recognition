@@ -69,12 +69,13 @@ cd src/githubs
 git clone https://github.com/bewithme/ildoonet-tf-pose-estimation.git
 and rename ildoonet-tf-pose-estimation to tf-pose-estimation
 ```
-
-Follow its tutorial [here](https://github.com/ildoonet/tf-pose-estimation#install-1) to download the "cmu" model. As for the "mobilenet_thin", it's already inside the folder.  
+ 
 
 ```
-$ cd tf-pose-estimation/models/graph/cmu  
-$ bash download.sh  
+download pretarined model from 链接: https://pan.baidu.com/s/1swZtvcDBPqEuM7RAFm3P7Q  密码: v5ge
+
+and put it into tf-pose-estimation/models/graph/cmu
+
 ```
 
 Then install dependencies. I listed my installation steps as bellow:
