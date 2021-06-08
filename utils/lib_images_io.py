@@ -222,7 +222,7 @@ class ImageDisplayer(object):
     ''' A simple wrapper of using cv2.imshow to display image '''
 
     def __init__(self):
-        self._window_name = "cv2_display_window"
+        self._window_name = "Web Cam Demo"
         cv2.namedWindow(self._window_name, cv2.WINDOW_NORMAL)
 
     def display(self, image, wait_key_ms=1):
