@@ -89,6 +89,7 @@ def get_length_of_one_skeleton_data(filepaths):
 if __name__ == "__main__":
     ''' Read multiple skeletons txts and saved them into a single txt. '''
 
+    print(SRC_DETECTED_SKELETONS_FOLDER)
     # -- Get skeleton filenames
     filepaths = lib_commons.get_filenames(SRC_DETECTED_SKELETONS_FOLDER,
                                           use_sort=True, with_folder_path=True)
@@ -96,7 +97,7 @@ if __name__ == "__main__":
 
     # -- Check data length of one skeleton
     data_length = get_length_of_one_skeleton_data(filepaths)
-    print("Data length of one skeleton is {data_length}")
+    print(f"Data length of one skeleton is {data_length}")
 
     # -- Read in skeletons and push to all_skeletons
     all_skeletons = []
@@ -121,7 +122,7 @@ if __name__ == "__main__":
             print("{}/{}".format(i, num_skeletons))
 
     # -- Save to txt
-    with open(DST_ALL_SKELETONS_TXT, 'w') as f:
+    with open(DST_ALL_SKELETONS_TXT, 'w',encoding='utf-8') as f:
         simplejson.dump(all_skeletons, f)
 
     print(f"There are {len(all_skeletons)} skeleton data.")

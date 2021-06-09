@@ -134,6 +134,7 @@ cfg_all = lib_commons.read_yaml(ROOT + "config/config.yaml")
 cfg = cfg_all["s5_test.py"]
 
 CLASSES = np.array(cfg_all["classes"])
+CLASSES_ZH = np.array(cfg_all["classes_zh"])
 SKELETON_FILENAME_FORMAT = cfg_all["skeleton_filename_format"]
 
 # Action recognition: number of frames used to extract features.
@@ -325,7 +326,7 @@ if __name__ == "__main__":
 
     multiperson_tracker = Tracker()
 
-    multiperson_classifier = MultiPersonClassifier(SRC_MODEL_PATH, CLASSES)
+    multiperson_classifier = MultiPersonClassifier(SRC_MODEL_PATH, CLASSES_ZH)
 
     # -- Image reader and displayer
     images_loader = select_images_loader(SRC_DATA_TYPE, SRC_DATA_PATH)
