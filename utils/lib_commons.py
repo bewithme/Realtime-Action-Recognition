@@ -22,13 +22,13 @@ def save_listlist(filepath, ll):
     ''' Save a list of lists to file '''
     folder_path = os.path.dirname(filepath)
     os.makedirs(folder_path, exist_ok=True)
-    with open(filepath, 'w') as f:
+    with open(filepath, 'w',encoding='utf-8') as f:
         simplejson.dump(ll, f)
 
 
 def read_listlist(filepath):
     ''' Read a list of lists from file '''
-    with open(filepath, 'r') as f:
+    with open(filepath, 'r',encoding='utf-8') as f:
         ll = simplejson.load(f)
         return ll
 
@@ -37,8 +37,9 @@ def read_yaml(filepath):
     ''' Input a string filepath, 
         output a `dict` containing the contents of the yaml file.
     '''
-    with open(filepath, 'r') as stream:
+    with open(filepath, 'r',encoding='utf-8') as stream:
         data_loaded = yaml.safe_load(stream)
+
     return data_loaded
 
 
