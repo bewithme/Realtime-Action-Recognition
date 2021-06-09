@@ -4,7 +4,7 @@ matplotlib
 scikit-learn==0.21.3
 scikit-image
 opencv-python
-opencv-python-headless
+opencv-python-headless #安装无需图形依赖库的opencv，否则在无图形的OS中会报错
 h5py
 imgaug
 pandas
