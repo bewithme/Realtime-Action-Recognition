@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QPalette, QBrush, QPixmap
 import os
-
+'''http://code.py40.com/pyqt5/14.html 学习pyqt5'''
 class App(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super(App, self).__init__(parent)
