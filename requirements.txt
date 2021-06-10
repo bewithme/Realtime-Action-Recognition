@@ -13,3 +13,4 @@ simplejson
 sklearn
 slidingwindow
 pyyaml
+PyQt5
