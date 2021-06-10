@@ -15,7 +15,7 @@ class App(QtWidgets.QWidget):
 
         # self.face_recong = face.Recognition()
         self.timer_camera = QtCore.QTimer()
-        self.cap = cv2.VideoCapture()
+        self.videoCapture = cv2.VideoCapture()
         self.CAM_NUM = 0
         self.set_ui()
         self.slot_init()
@@ -38,7 +38,7 @@ class App(QtWidgets.QWidget):
 
         #Button 的颜色修改
         button_color = [self.button_open_camera, self.button_close]
-        for i in range(2):
+        '''for i in range(2):
             button_color[i].setStyleSheet("QPushButton{color:black}"
                                           "QPushButton:hover{color:red}"
                                           "QPushButton{background-color:rgb(78,255,255)}"
@@ -46,7 +46,7 @@ class App(QtWidgets.QWidget):
                                           "QPushButton{border-radius:10px}"
                                           "QPushButton{padding:2px 4px}")
 
-
+        '''
         self.button_open_camera.setMinimumHeight(50)
         self.button_close.setMinimumHeight(50)
 
@@ -58,8 +58,8 @@ class App(QtWidgets.QWidget):
         self.label_move = QtWidgets.QLabel()
         self.label_move.setFixedSize(100, 100)
 
-        self.label_show_camera.setFixedSize(641, 481)
-        self.label_show_camera.setAutoFillBackground(False)
+        #self.label_show_camera.setFixedSize(641, 481)
+        #self.label_show_camera.setAutoFillBackground(False)
 
         self.__layout_fun_button.addWidget(self.button_open_camera)
         self.__layout_fun_button.addWidget(self.button_close)
@@ -70,7 +70,7 @@ class App(QtWidgets.QWidget):
 
         self.setLayout(self.__layout_main)
         self.label_move.raise_()
-        self.setWindowTitle(u'摄像头')
+        self.setWindowTitle(u'App')
 
         '''
         # 设置背景图片
@@ -88,7 +88,7 @@ class App(QtWidgets.QWidget):
 
     def button_open_camera_click(self):
         if self.timer_camera.isActive() == False:
-            flag = self.cap.open(self.CAM_NUM)
+            flag = self.videoCapture.open(self.CAM_NUM)
             if flag == False:
                 msg = QtWidgets.QMessageBox.warning(self, u"Warning", u"请检测相机与电脑是否连接正确", buttons=QtWidgets.QMessageBox.Ok,
                                                     defaultButton=QtWidgets.QMessageBox.Ok)
@@ -100,18 +100,18 @@ class App(QtWidgets.QWidget):
                 self.button_open_camera.setText(u'关闭相机')
         else:
             self.timer_camera.stop()
-            self.cap.release()
+            self.videoCapture.release()
             self.label_show_camera.clear()
             self.button_open_camera.setText(u'打开相机')
 
 
     def show_camera(self):
-        flag, self.image = self.cap.read()
+        flag, self.image = self.videoCapture.read()
         # face = self.face_detect.align(self.image)
         # if face:
         #     pass
-        show = cv2.resize(self.image, (640, 480))
-        show = cv2.cvtColor(show, cv2.COLOR_BGR2RGB)
+        #show = cv2.resize(self.image, (640, 480))
+        show = cv2.cvtColor(self.image, cv2.COLOR_BGR2RGB)
         # print(show.shape[1], show.shape[0])
         #show.shape[1] = 640, show.shape[0] = 480
         showImage = QtGui.QImage(show.data, show.shape[1], show.shape[0], QtGui.QImage.Format_RGB888)
@@ -138,8 +138,8 @@ class App(QtWidgets.QWidget):
             event.ignore()
         else:
             #             self.socket_client.send_command(self.socket_client.current_user_command)
-            if self.cap.isOpened():
-                self.cap.release()
+            if self.videoCapture.isOpened():
+                self.videoCapture.release()
             if self.timer_camera.isActive():
                 self.timer_camera.stop()
             event.accept()
