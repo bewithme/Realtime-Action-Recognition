@@ -21,7 +21,7 @@ for i in range(0, len(alphabet) - seq_length, 1):
     dataX.append([char_to_int[char] for char in seq_in])
     dataY.append(char_to_int[seq_out])
     print (seq_in, '->', seq_out)
-# reshape X to be [samples, time steps, features]
+# reshape X to be [samples, time steps, input size]
 X = numpy.reshape(dataX, (len(dataX), seq_length, 1))
 # normalize
 X = X / float(len(alphabet))
