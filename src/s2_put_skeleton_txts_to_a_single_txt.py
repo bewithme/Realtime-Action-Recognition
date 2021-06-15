@@ -86,6 +86,7 @@ def get_length_of_one_skeleton_data(filepaths):
 
 
 # -- Main
+'''把多个单人的18个关键点坐标信息数组拼接成一个大的数组'''
 if __name__ == "__main__":
     ''' Read multiple skeletons txts and saved them into a single txt. '''
 
