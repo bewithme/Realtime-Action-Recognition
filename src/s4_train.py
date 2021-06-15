@@ -101,6 +101,9 @@ def main():
     print("\nReading csv files of classes, features, and labels ...")
     X = np.loadtxt(SRC_PROCESSED_FEATURES, dtype=float)  # features
     Y = np.loadtxt(SRC_PROCESSED_FEATURES_LABELS, dtype=int)  # labels
+
+    print(X.shape)
+    print(Y.shape)
     
     # -- Train-test split
     tr_X, te_X, tr_Y, te_Y = train_test_split(
