@@ -149,7 +149,9 @@ if __name__ == "__main__":
 
         # Save skeleton data for training
         filename = SKELETON_FILENAME_FORMAT.format(ith_img)
-        # save skeleton info to file to dir data_proc/raw_skeletons/skeleton_res , one skeleton one file
+        # save one image info[cnt_action, cnt_clip, cnt_image, action_label, filepath] and
+        # skeleton info[18 points] to one file and save it
+        # to dir data_proc/raw_skeletons/skeleton_res
         lib_commons.save_listlist(DST_DETECTED_SKELETONS_FOLDER + filename, skels_to_save)
 
         # Save the visualized image for debug
