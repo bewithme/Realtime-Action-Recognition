@@ -295,7 +295,7 @@ Then, follow the following steps to do the training:
 * Depend on your need, you may change parameters in [config/config.yaml](config/config.yaml).
 * Finally, run the following scripts one by one:
     ``` bash
-    python src/s1_get_skeletons_from_training_imgs.py  (detect image and output array [action index,clip index,image index,action label,image path,18 key points coordinate] to txt feature file one by one)
+    python src/s1_get_skeletons_from_training_imgs.py  (detect keypoints from image and output as array [action index,clip index,image index,action label,image path,18 key points coordinate] to single txt feature file one by one)
     python src/s2_put_skeleton_txts_to_a_single_txt.py (merge all single txt feature file to one file)
     python src/s3_preprocess_features.py (pre process features window_size by window_size)
     python src/s4_train.py 
